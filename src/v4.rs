@@ -25,9 +25,7 @@ impl Uuid {
     pub fn new_v4() -> Self {
         let mut bytes = [0; 16];
         getrandom(&mut bytes).expect("RNG failure!");
-
-        rng.fill_bytes(&mut bytes);
-
+        
         Builder::from_bytes(bytes)
             .set_variant(Variant::RFC4122)
             .set_version(Version::Random)
