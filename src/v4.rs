@@ -1,5 +1,5 @@
 use crate::prelude::*;
-use rand;
+use getrandom::getrandom;
 
 impl Uuid {
     /// Creates a random UUID.
@@ -23,10 +23,8 @@ impl Uuid {
     ///
     /// [`rand`]: https://crates.io/crates/rand
     pub fn new_v4() -> Self {
-        use rand::RngCore;
-
-        let mut rng = rand::thread_rng();
         let mut bytes = [0; 16];
+        getrandom(&mut bytes).expect("RNG failure!");
 
         rng.fill_bytes(&mut bytes);
 
