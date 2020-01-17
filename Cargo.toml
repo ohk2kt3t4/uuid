@@ -30,7 +30,7 @@ homepage = "https://github.com/uuid-rs/uuid"
 name = "uuid"
 readme = "README.md"
 repository = "https://github.com/uuid-rs/uuid"
-version = "0.8.1" # remember to update html_root_url in lib.rs
+version = "0.8.2" # remember to update html_root_url in lib.rs
 
 [package.metadata.docs.rs]
 features = [ "guid", "serde", "slog", "v1", "v3", "v4", "v5" ]
@@ -53,6 +53,10 @@ status = "actively-developed"
 
 [badges.travis-ci]
 repository = "uuid-rs/uuid"
+
+[dependencies.getrandom]
+optional = true
+version = "0.1"
 
 [dependencies.md5]
 optional = true
@@ -95,7 +99,7 @@ std = []
 stdweb = [ "rand/stdweb" ]
 v1 = []
 v3 = ["md5"]
-v4 = ["rand"]
+v4 = ["getrandom"]
 v5 = ["sha1"]
 wasm-bindgen = ["rand/wasm-bindgen"]
 
